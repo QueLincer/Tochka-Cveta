@@ -1,0 +1,527 @@
+:root {
+    --background: #F4E6D6;
+    --text: #3D1E0F;
+    --border: #CFB0A2;
+    --accent: #AC543C;
+    --surface: #E9D7C3;
+
+    --accent-hover: #BF664D;
+    --input-background: #FBF3EB;
+    --card-background: #F8EFE5;
+}
+
+:root.olive-palette {
+    --background: #F1EEDC;
+    --text: #253D0F;
+    --border: #CACFA2;
+    --accent: #63753A;
+    --surface: #DDDDBB;
+
+    --accent-hover: #556632;
+    --input-background: #F8F7ED;
+    --card-background: #F5F3E6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--background);
+    font-size: 16px;
+    color: var(--text);
+    font-family: "Nunito", sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 80px;
+    border-bottom: 2px solid var(--border);
+}
+
+.header-logo {
+    display: flex;
+    gap: 8px;
+}
+
+.logo-icon {
+    width: 35px;
+    height: 33px;
+}
+
+.logo-text {
+    width: 150px;
+    height: 33px;
+}
+
+.header-logo:hover .logo-icon {
+    animation: logo-spin 1s ease-in-out;
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.header-menu {
+    display: flex;
+    gap: 60px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+.a-active {
+    color: var(--accent);
+}
+
+.header-settings {
+    display: flex;
+    gap: 16px;
+}
+
+.setting-button {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background-color: var(--background);
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+.palette-toggle,
+.brush-toggle {
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+body.brush-on,
+body.brush-on * {
+    cursor: url('../Images/brush.svg') 2 30, auto;
+}
+
+#brush-trail {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#palette {
+    display: inline-flex;
+}
+
+#palette::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    margin-right: 8px;
+    transform: translateY(2px);
+}
+
+section {
+    padding: 0 80px;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.hero {
+    background-image: url('../Images/hero-bg.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 700px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+h1 {
+    font-family: "Gabriela", serif;
+    font-size: 60px;
+    line-height: 64px;
+    font-weight: 400;
+}
+
+.hero-text {
+    font-size: 20px;
+    margin-bottom: 48px;
+}
+
+.button {
+    padding: 12px 24px;
+    background-color: var(--accent);
+    font-weight: 500;
+    color: var(--background);
+    width: fit-content;
+    border-radius: 100px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    color: var(--background);
+    background-color: var(--accent-hover);
+}
+
+h2 {
+    font-family: "Gabriela", serif;
+    font-size: 36px;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: end;
+    width: 100%;
+}
+
+h2::after {
+    content: "";
+    display: inline-block;
+    flex-grow: 1;
+    height: 2px;
+    background-color: var(--border);
+    margin-left: 8px;
+    transform: translateY(-10px);
+}
+
+.cards {
+    display: flex;
+    width: 100%;
+    gap: 24px;
+}
+
+.card {
+    width: calc((100% - 48px) / 3);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.photo-picture {
+    width: 100%;
+    height: 300px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.photo-picture:hover {
+    transform: scale(1.1) rotate(4deg);
+}
+
+#photo-picture-1,
+#service-picture-1 {
+    background-image: url("../Images/landscape.png");
+}
+
+#photo-picture-2,
+#service-picture-2 {
+    background-image: url("../Images/still-life.png");
+}
+
+#photo-picture-3,
+#service-picture-3 {
+    background-image: url("../Images/portrait.png");
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card-title {
+    font-family: "Gabriela", serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 200px;
+}
+
+.step-image {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.step-mazok {
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.step:hover .step-mazok {
+    opacity: 1;
+}
+
+.step-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.arrow {
+    align-self: flex-end;
+    transform: translateY(-50px);
+}
+
+.button-center {
+    align-self: center;
+}
+
+footer {
+    padding: 24px 80px 40px 80px;
+    background-color: var(--surface);
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-menu,
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section-about-us {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.section-about-us:first-of-type {
+    margin-top: 80px;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.about-big,
+.service-big {
+    font-family: "Gabriela", serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.about-image {
+    width: calc(50% - 20px);
+    border-radius: 16px;
+}
+
+.service-heading,
+.order-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 80px;
+}
+
+.service-text,
+.service-big {
+    max-width: 570px;
+}
+
+.service-picture {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+}
+
+.text-opacity {
+    opacity: 0.5;
+}
+
+.card-button {
+    min-width: 160px;
+    text-align: center;
+}
+
+form {
+    width: 620px;
+    border: 2px solid var(--border);
+    padding: 24px;
+    border-radius: 24px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.input-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    height: 40px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 0;
+    background-color: var(--input-background);
+    font-size: 14px;
+    color: inherit;
+}
+
+textarea {
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.two-inputs {
+    display: flex;
+    gap: 24px;
+}
+
+.form-button {
+    border: 0;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.section-game {
+    margin-top: 60px;
+}
+
+.game-content {
+    display: grid;
+    gap: 24px;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.game-description {
+    font-family: "Gabriela", serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.game-info,
+.game-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+}
+
+.game-info {
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.game-field {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.game-card {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0;
+    background-color: var(--card-background);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+.game-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 130px;
+    padding: 8px;
+    object-fit: contain;
+}
+
+.game-card.is-found {
+    border: 3px solid var(--accent);
+}
+
+.game-buttons button {
+    font: inherit;
+}
+
+.game-buttons .button {
+    border: 0;
+}
+
+.game-pause {
+    padding: 12px 24px;
+    color: var(--text);
+    background-color: transparent;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+}
+
+.section-game button:enabled {
+    cursor: pointer;
+}
+
+.section-game button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.game-pause:disabled {
+    opacity: 0.5;
+}
+
+.game-message {
+    min-height: 24px;
+    font-weight: 600;
+}
